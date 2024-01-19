@@ -4,7 +4,7 @@ const sequelize = new Sequelize('employeedb', 'root', 'viki123', {
     host: 'localhost',
     dialect: 'mysql',  /*| 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
 
-    // logging: false
+    logging: false
   });
 
   try {
@@ -15,9 +15,10 @@ const sequelize = new Sequelize('employeedb', 'root', 'viki123', {
   }
 
   var db={};
-  // db.Sequelize = Sequelize;
-  // db.sequelize = sequelize;
-  // db.DataTypes = DataTypes;
+  db.Sequelize = Sequelize;
+  db.sequelize = sequelize;
+  db.DataTypes = DataTypes;
+  db.Model= Model;
   db.user = require('./user')(sequelize, DataTypes, Model);
   db.contact = require('./contact')(sequelize, DataTypes);
 
