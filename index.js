@@ -2,7 +2,7 @@ const express = require('express')
 var bodyParser = require('body-parser')
 // const User=require('./models/user')
 // const Contact=require('./models/contact')
-require('./models');
+require('./models');  //by default it will take index.js from models
 var userCtrl=require('./controllers/userControllers');
 
 const app = express()
@@ -15,6 +15,8 @@ app.get('/', function (req, res) {
 });
 
 app.get('/add', userCtrl.addUser);
+app.get('/users', userCtrl.getUsers);
+app.get('/users/:id', userCtrl.getUser);
 
 
 

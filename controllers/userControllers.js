@@ -17,9 +17,26 @@ var addUser = async(req, res) => {
 
 //   await jane.save();
   console.log('Jane was saved to the database!');
-  res.status(200).json(jane.toJSON());  //200-> success
+  res.status(200).json(jane.toJSON());  //200-> success-> this will print data on brouser
 };
 
+var getUsers = async(req, res) =>{
+  const data = await User.findAll({});
+  res.status(200).json({data:data});
+}
+
+var getUser = async(req, res) =>{
+  const data = await User.findOne({
+    where: {
+      id:req.params.id
+    }
+  });
+  res.status(200).json({data:data});
+}
+
+
 module.exports={
-    addUser
+    addUser,
+    getUsers,
+    getUser
 }
