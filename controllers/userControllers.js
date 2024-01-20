@@ -34,9 +34,40 @@ var getUser = async(req, res) =>{
   res.status(200).json({data:data});
 }
 
+var postUsers = async(req, res) =>{
+  var postData=req.body;
+  if(postData.length>1){
+    var data = await User.bulkCreate(postData);
+  }else{
+    var data = await User.create(postData);
+  }
+  res.status(200).json({data:data});
+}
+
+var deleteUser = async(req, res) =>{
+  var data = await User.destroy({
+    where: {
+      id:req.params.id
+    }
+  });
+  res.status(200).json({data:data});
+}
+
+var patchUser = async(req, res) =>{
+  var updatedData=req.body;
+  var data = await User.update(updatedData, {
+    where: {
+      id:req.params.id
+    }
+  });
+  res.status(200).json({data:data});
+}
 
 module.exports={
     addUser,
     getUsers,
-    getUser
+    getUser,
+    postUsers,
+    deleteUser,
+    patchUser
 }

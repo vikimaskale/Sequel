@@ -22,6 +22,6 @@ const sequelize = new Sequelize('employeedb', 'root', 'viki123', {
   db.user = require('./user')(sequelize, DataTypes, Model);
   db.contact = require('./contact')(sequelize, DataTypes);
 
-  sequelize.sync({ force: true });
+  sequelize.sync({ force: false });
 
   module.exports= db;

@@ -17,6 +17,10 @@ app.get('/', function (req, res) {
 app.get('/add', userCtrl.addUser);
 app.get('/users', userCtrl.getUsers);
 app.get('/users/:id', userCtrl.getUser);
+app.post('/users', userCtrl.postUsers);
+app.delete('/users/:id', userCtrl.deleteUser);
+
+app.patch('/users/:id', userCtrl.patchUser);
 
 
 
